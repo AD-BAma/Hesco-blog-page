@@ -15,19 +15,19 @@ export const FAQSection = () => {
   ];
 
   return (
-    <section id="faq" className="py-28 lg:py-36 bg-[#080C14] text-slate-100 relative bg-grid-pattern border-b border-white/10">
+    <section id="faq" className="py-28 lg:py-36 bg-white dark:bg-[#080C14] text-slate-900 dark:text-slate-100 relative bg-grid-pattern border-b border-slate-200/80 dark:border-white/10 transition-colors duration-300">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
         <div className="text-center mb-20 space-y-4">
-          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full apple-glass-dark border border-cyan-500/30 text-cyan-400 text-xs font-mono font-semibold uppercase tracking-wider">
-            <HelpCircle className="w-4 h-4 text-cyan-400" />
+          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-cyan-50 dark:bg-slate-900 border border-cyan-200 dark:border-cyan-500/30 text-cyan-800 dark:text-cyan-400 text-xs font-mono font-semibold uppercase tracking-wider">
+            <HelpCircle className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
             <span>{t.faq.badge}</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white">
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white">
             {t.faq.title}
           </h2>
-          <p className="text-slate-400 text-base sm:text-xl font-normal leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-400 text-base sm:text-xl font-normal leading-relaxed">
             {t.faq.subtitle}
           </p>
         </div>
@@ -39,22 +39,22 @@ export const FAQSection = () => {
             return (
               <div
                 key={idx}
-                className="apple-glass-card rounded-2xl overflow-hidden transition-all border border-white/10 hover:border-cyan-500/30"
+                className="apple-glass-card rounded-2xl overflow-hidden transition-all border border-slate-200 dark:border-white/10 hover:border-cyan-400"
               >
                 <button
                   onClick={() => setOpenIdx(isOpen ? null : idx)}
-                  className="w-full p-6 sm:p-7 text-left flex items-center justify-between gap-6 font-bold text-white hover:text-cyan-400 transition-colors"
+                  className="w-full p-6 sm:p-7 text-left flex items-center justify-between gap-6 font-bold text-slate-900 dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
                 >
                   <span className="text-base sm:text-lg leading-snug tracking-tight">{item.q}</span>
                   {isOpen ? (
-                    <ChevronUp className="w-5 h-5 text-cyan-400 shrink-0" />
+                    <ChevronUp className="w-5 h-5 text-cyan-600 dark:text-cyan-400 shrink-0" />
                   ) : (
                     <ChevronDown className="w-5 h-5 text-slate-400 shrink-0" />
                   )}
                 </button>
 
                 {isOpen && (
-                  <div className="px-6 sm:px-7 pb-7 text-xs sm:text-sm text-slate-300 font-normal leading-relaxed border-t border-white/10 pt-5">
+                  <div className="px-6 sm:px-7 pb-7 text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-normal leading-relaxed border-t border-slate-200 dark:border-white/10 pt-5">
                     {item.a}
                   </div>
                 )}

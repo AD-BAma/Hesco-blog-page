@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { ShieldCheck, CheckCircle2, Sliders } from 'lucide-react';
+import { CheckCircle2, Sliders } from 'lucide-react';
 
 export const PurificationProcess = () => {
   const { t } = useLanguage();
@@ -39,20 +39,20 @@ export const PurificationProcess = () => {
   ];
 
   return (
-    <section id="purification" className="py-28 lg:py-36 bg-[#0B101D] text-slate-100 relative border-b border-white/10">
+    <section id="purification" className="py-28 lg:py-36 bg-slate-50 dark:bg-[#0B101D] text-slate-900 dark:text-slate-100 relative border-b border-slate-200/80 dark:border-white/10 transition-colors duration-300">
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
-          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full apple-glass-dark border border-emerald-500/30 text-emerald-400 text-xs font-mono font-semibold uppercase tracking-wider">
-            <Sliders className="w-4 h-4 text-emerald-400" />
+          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/30 text-emerald-800 dark:text-emerald-400 text-xs font-mono font-semibold uppercase tracking-wider">
+            <Sliders className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
             <span>{t.purification.badge}</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white">
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white">
             {t.purification.title}
           </h2>
-          <p className="text-slate-400 text-base sm:text-xl font-normal leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-400 text-base sm:text-xl font-normal leading-relaxed">
             {t.purification.subtitle}
           </p>
         </div>
@@ -62,28 +62,28 @@ export const PurificationProcess = () => {
           {steps.map((step, idx) => (
             <div
               key={idx}
-              className="apple-glass-card p-6 sm:p-7 rounded-3xl relative flex flex-col justify-between group hover:border-cyan-500/40 transition-all duration-300"
+              className="apple-glass-card p-6 sm:p-7 rounded-3xl relative flex flex-col justify-between group hover:border-cyan-400 transition-all duration-300"
             >
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-3xl sm:text-4xl font-extrabold text-cyan-400 font-mono-num">
+                  <span className="text-3xl sm:text-4xl font-extrabold text-cyan-700 dark:text-cyan-400 font-mono-num">
                     {step.stepNumber}
                   </span>
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                 </div>
                 
-                <h3 className="text-lg font-bold text-white leading-snug tracking-tight">
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white leading-snug tracking-tight">
                   {step.title}
                 </h3>
                 
-                <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal">
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed font-normal">
                   {step.desc}
                 </p>
               </div>
 
-              <div className="mt-8 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] font-mono font-semibold">
-                <span className="text-cyan-400">{step.tag}</span>
-                <span className="text-emerald-400">PASSED</span>
+              <div className="mt-8 pt-4 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-[11px] font-mono font-semibold">
+                <span className="text-cyan-700 dark:text-cyan-400">{step.tag}</span>
+                <span className="text-emerald-700 dark:text-emerald-400">PASSED</span>
               </div>
             </div>
           ))}
