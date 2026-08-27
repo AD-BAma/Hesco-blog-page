@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { Newspaper, Calendar, ArrowRight, BookOpen, X } from 'lucide-react';
+import { Newspaper, Calendar, ArrowRight, X } from 'lucide-react';
 
 export const NewsUpdates = () => {
   const { t } = useLanguage();
@@ -34,58 +34,59 @@ export const NewsUpdates = () => {
   ];
 
   return (
-    <section id="news" className="py-28 lg:py-36 bg-slate-50/50 text-slate-900 relative border-y border-slate-200/60">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+    <section id="news" className="py-28 lg:py-36 bg-[#0B101D] text-slate-100 relative border-b border-white/10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full apple-glass-dark border border-cyan-500/30 text-cyan-400 text-xs font-mono font-semibold uppercase tracking-wider">
+            <Newspaper className="w-4 h-4 text-cyan-400" />
             <span>{t.news.badge}</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900">
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white">
             {t.news.title}
           </h2>
-          <p className="text-slate-600 text-lg sm:text-xl font-normal leading-relaxed">
+          <p className="text-slate-400 text-base sm:text-xl font-normal leading-relaxed">
             {t.news.subtitle}
           </p>
         </div>
 
         {/* Articles Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {articles.map((article) => (
             <div
               key={article.id}
-              className="bg-white rounded-3xl p-8 border border-slate-200 shadow-md flex flex-col justify-between hover:border-blue-300 hover:shadow-2xl transition-all duration-300 group"
+              className="apple-glass-card rounded-3xl p-7 flex flex-col justify-between group hover:border-cyan-500/40 transition-all duration-300"
             >
-              <div className="space-y-5">
+              <div className="space-y-4">
                 
-                <div className="flex items-center justify-between text-xs text-slate-500">
-                  <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-700 font-bold border border-blue-100">
+                <div className="flex items-center justify-between text-xs font-mono">
+                  <span className="px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-semibold">
                     {article.category}
                   </span>
-                  <div className="flex items-center gap-1.5 text-slate-500 font-medium">
-                    <Calendar className="w-4 h-4" />
+                  <div className="flex items-center gap-1.5 text-slate-400">
+                    <Calendar className="w-3.5 h-3.5 text-cyan-400" />
                     <span>{article.date}</span>
                   </div>
                 </div>
 
-                <h3 className="text-xl font-bold text-slate-900 leading-snug group-hover:text-blue-600 transition-colors">
+                <h3 className="text-lg font-bold text-white leading-snug group-hover:text-cyan-400 transition-colors tracking-tight">
                   {article.title}
                 </h3>
 
-                <p className="text-sm text-slate-600 leading-relaxed font-normal">
+                <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal">
                   {article.desc}
                 </p>
 
               </div>
 
-              <div className="mt-8 pt-4 border-t border-slate-100">
+              <div className="mt-8 pt-4 border-t border-white/10">
                 <button
                   onClick={() => setActiveArticle(article)}
-                  className="flex items-center gap-2 text-sm font-bold text-blue-600 hover:text-blue-800 transition-colors"
+                  className="flex items-center gap-2 text-xs font-mono font-bold text-cyan-400 hover:text-cyan-300 transition-colors"
                 >
                   <span>{t.news.readMore}</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>
 
@@ -95,23 +96,23 @@ export const NewsUpdates = () => {
 
         {/* Article Reading Modal */}
         {activeArticle && (
-          <div className="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4">
-            <div className="bg-white max-w-2xl w-full rounded-3xl p-10 border border-slate-200 shadow-2xl relative animate-fadeIn space-y-6 max-h-[85vh] overflow-y-auto text-slate-900">
+          <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+            <div className="apple-glass-card max-w-2xl w-full rounded-3xl p-8 sm:p-10 relative animate-fadeIn space-y-6 max-h-[85vh] overflow-y-auto">
               
               <button
                 onClick={() => setActiveArticle(null)}
-                className="absolute top-6 right-6 p-2 rounded-full bg-slate-100 text-slate-500 hover:text-slate-900 hover:bg-slate-200 transition-colors"
+                className="absolute top-6 right-6 p-2 rounded-full bg-slate-900 text-slate-400 hover:text-white border border-white/10"
               >
-                <X className="w-6 h-6" />
+                <X className="w-5 h-5" />
               </button>
 
-              <div className="inline-block px-3.5 py-1.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200 text-xs font-bold">
+              <div className="inline-block px-3.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-xs font-mono font-bold">
                 {activeArticle.category} • {activeArticle.date}
               </div>
 
-              <h3 className="text-3xl font-bold text-slate-900 leading-snug">{activeArticle.title}</h3>
+              <h3 className="text-2xl font-extrabold text-white leading-snug tracking-tight">{activeArticle.title}</h3>
 
-              <div className="text-base text-slate-600 leading-relaxed space-y-4 font-normal">
+              <div className="text-sm text-slate-300 leading-relaxed space-y-4 font-normal">
                 <p>{activeArticle.fullContent}</p>
               </div>
 

@@ -15,45 +15,46 @@ export const FAQSection = () => {
   ];
 
   return (
-    <section id="faq" className="py-28 lg:py-36 bg-white text-slate-900 relative">
-      <div className="max-w-4xl mx-auto px-6 sm:px-8">
+    <section id="faq" className="py-28 lg:py-36 bg-[#080C14] text-slate-100 relative bg-grid-pattern border-b border-white/10">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
         <div className="text-center mb-20 space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full apple-glass-dark border border-cyan-500/30 text-cyan-400 text-xs font-mono font-semibold uppercase tracking-wider">
+            <HelpCircle className="w-4 h-4 text-cyan-400" />
             <span>{t.faq.badge}</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900">
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white">
             {t.faq.title}
           </h2>
-          <p className="text-slate-600 text-lg sm:text-xl font-normal leading-relaxed">
+          <p className="text-slate-400 text-base sm:text-xl font-normal leading-relaxed">
             {t.faq.subtitle}
           </p>
         </div>
 
         {/* Accordion List */}
-        <div className="space-y-6">
+        <div className="space-y-4">
           {faqs.map((item, idx) => {
             const isOpen = openIdx === idx;
             return (
               <div
                 key={idx}
-                className="bg-white rounded-3xl border border-slate-200 shadow-md overflow-hidden transition-all hover:border-blue-300"
+                className="apple-glass-card rounded-2xl overflow-hidden transition-all border border-white/10 hover:border-cyan-500/30"
               >
                 <button
                   onClick={() => setOpenIdx(isOpen ? null : idx)}
-                  className="w-full p-8 text-left flex items-center justify-between gap-6 font-bold text-slate-900 hover:text-blue-600 transition-colors"
+                  className="w-full p-6 sm:p-7 text-left flex items-center justify-between gap-6 font-bold text-white hover:text-cyan-400 transition-colors"
                 >
-                  <span className="text-lg sm:text-xl leading-snug">{item.q}</span>
+                  <span className="text-base sm:text-lg leading-snug tracking-tight">{item.q}</span>
                   {isOpen ? (
-                    <ChevronUp className="w-6 h-6 text-blue-600 shrink-0" />
+                    <ChevronUp className="w-5 h-5 text-cyan-400 shrink-0" />
                   ) : (
-                    <ChevronDown className="w-6 h-6 text-slate-400 shrink-0" />
+                    <ChevronDown className="w-5 h-5 text-slate-400 shrink-0" />
                   )}
                 </button>
 
                 {isOpen && (
-                  <div className="px-8 pb-8 text-base text-slate-600 font-normal leading-relaxed border-t border-slate-100 pt-6 animate-fadeIn">
+                  <div className="px-6 sm:px-7 pb-7 text-xs sm:text-sm text-slate-300 font-normal leading-relaxed border-t border-white/10 pt-5">
                     {item.a}
                   </div>
                 )}

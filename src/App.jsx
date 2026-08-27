@@ -21,7 +21,7 @@ function MainApp() {
   const [sampleFormSent, setSampleFormSent] = useState(false);
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-blue-600 selection:text-white">
+    <div className="min-h-screen bg-[#080C14] text-slate-100 font-sans selection:bg-cyan-400 selection:text-slate-950">
       
       {/* Navigation */}
       <Navbar onOpenBrochure={() => setBrochureOpen(true)} />
@@ -70,36 +70,36 @@ function MainApp() {
 
       {/* Sample Request Modal */}
       {sampleProduct && (
-        <div className="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white max-w-lg w-full rounded-3xl p-8 border border-slate-200 shadow-2xl relative animate-fadeIn space-y-4 text-slate-900">
+        <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+          <div className="apple-glass-card max-w-lg w-full rounded-3xl p-8 relative animate-fadeIn space-y-4 text-slate-100">
             
             <button
               onClick={() => setSampleProduct(null)}
-              className="absolute top-6 right-6 p-2 rounded-full bg-slate-100 text-slate-500 hover:text-slate-900 hover:bg-slate-200 transition-colors"
+              className="absolute top-6 right-6 p-2 rounded-full bg-slate-900 text-slate-400 hover:text-white border border-white/10"
             >
               <X className="w-5 h-5" />
             </button>
 
-            <div className="flex items-center gap-2 text-blue-600 text-xs font-bold uppercase tracking-wider">
+            <div className="flex items-center gap-2 text-cyan-400 text-xs font-mono font-bold uppercase tracking-wider">
               <ShoppingBag className="w-4 h-4" />
               <span>Wholesale Sample Request</span>
             </div>
 
-            <h3 className="text-xl font-bold text-slate-900">
+            <h3 className="text-xl font-extrabold text-white tracking-tight">
               Request Sample: {sampleProduct.nameEn}
             </h3>
 
-            <p className="text-xs text-slate-600">
+            <p className="text-xs text-slate-400 font-mono">
               Case size: {sampleProduct.bottlesPerCase} bottles • Price: {sampleProduct.priceCrateFcfa.toLocaleString()} FCFA
             </p>
 
             {sampleFormSent ? (
-              <div className="p-6 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-2">
-                <div className="text-emerald-700 font-bold text-base">Sample Request Logged!</div>
-                <p className="text-xs text-emerald-800">Our Commercial Director will dispatch a representative to your business location.</p>
+              <div className="p-6 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-center space-y-2">
+                <div className="text-emerald-400 font-bold text-base">Sample Request Logged</div>
+                <p className="text-xs text-slate-300">Our Commercial Director will dispatch a representative to your business location.</p>
                 <button
                   onClick={() => setSampleProduct(null)}
-                  className="mt-4 text-xs font-bold text-blue-600 underline"
+                  className="mt-4 text-xs font-mono font-bold text-cyan-400 underline"
                 >
                   Close Window
                 </button>
@@ -116,23 +116,23 @@ function MainApp() {
                   type="text"
                   required
                   placeholder="Your Business / Hotel / Pharmacy Name"
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:border-blue-600 focus:bg-white outline-none"
+                  className="w-full bg-slate-900/90 border border-white/10 rounded-2xl px-4 py-3 text-sm text-white focus:border-cyan-500/50 outline-none"
                 />
                 <input
                   type="tel"
                   required
                   placeholder="Phone Number (WhatsApp)"
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:border-blue-600 focus:bg-white outline-none"
+                  className="w-full bg-slate-900/90 border border-white/10 rounded-2xl px-4 py-3 text-sm text-white focus:border-cyan-500/50 outline-none"
                 />
                 <input
                   type="text"
                   required
                   placeholder="Delivery Address / City"
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:border-blue-600 focus:bg-white outline-none"
+                  className="w-full bg-slate-900/90 border border-white/10 rounded-2xl px-4 py-3 text-sm text-white focus:border-cyan-500/50 outline-none"
                 />
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs py-3 rounded-xl shadow-md transition-all"
+                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-400 to-sky-500 hover:from-cyan-300 text-slate-950 font-extrabold text-xs py-3.5 rounded-2xl shadow-[0_0_20px_rgba(0,229,255,0.25)] transition-all"
                 >
                   <Send className="w-4 h-4" />
                   <span>Confirm Sample Order</span>

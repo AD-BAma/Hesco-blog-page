@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { storeLocations } from '../data/stores';
-import { MapPin, Search, Phone, Navigation, ShieldCheck, Filter } from 'lucide-react';
+import { MapPin, Search, Phone, ShieldCheck } from 'lucide-react';
 
 export const StoreLocator = () => {
   const { t } = useLanguage();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCity, setSelectedCity] = useState('All');
-  const [selectedCategory, setSelectedCategory] = useState('All');
 
   const filteredStores = storeLocations.filter((store) => {
     const matchesSearch =
@@ -16,54 +15,54 @@ export const StoreLocator = () => {
       store.address.toLowerCase().includes(searchTerm.toLowerCase());
 
     const matchesCity = selectedCity === 'All' || store.city === selectedCity;
-    const matchesCategory = selectedCategory === 'All' || store.category === selectedCategory;
 
-    return matchesSearch && matchesCity && matchesCategory;
+    return matchesSearch && matchesCity;
   });
 
   const cities = ['All', 'Douala', 'Yaoundé', 'Bamenda', 'Bafoussam', 'Kribi', 'Garoua'];
 
   return (
-    <section id="locations" className="py-28 lg:py-36 bg-white text-slate-900 relative">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+    <section id="locations" className="py-28 lg:py-36 bg-[#080C14] text-slate-100 relative bg-grid-pattern border-b border-white/10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full apple-glass-dark border border-cyan-500/30 text-cyan-400 text-xs font-mono font-semibold uppercase tracking-wider">
+            <MapPin className="w-4 h-4 text-cyan-400" />
             <span>{t.locations.badge}</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900">
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white">
             {t.locations.title}
           </h2>
-          <p className="text-slate-600 text-lg sm:text-xl font-normal leading-relaxed">
+          <p className="text-slate-400 text-base sm:text-xl font-normal leading-relaxed">
             {t.locations.subtitle}
           </p>
         </div>
 
         {/* Search & Filter Bar */}
-        <div className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-md mb-12 space-y-6">
+        <div className="apple-glass-card p-6 sm:p-8 rounded-3xl mb-12 space-y-6">
           
           <div className="relative">
-            <Search className="w-6 h-6 absolute left-5 top-1/2 -translate-y-1/2 text-slate-400" />
+            <Search className="w-5 h-5 absolute left-5 top-1/2 -translate-y-1/2 text-cyan-400" />
             <input
               type="text"
               placeholder={t.locations.searchPlaceholder}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-slate-50 border border-slate-200 rounded-2xl pl-14 pr-6 py-4 text-base text-slate-900 focus:border-blue-600 focus:bg-white outline-none"
+              className="w-full bg-slate-900/90 border border-white/10 rounded-2xl pl-14 pr-6 py-4 text-sm text-white focus:border-cyan-500/50 outline-none"
             />
           </div>
 
           {/* City Filter Pills */}
-          <div className="flex items-center gap-3 overflow-x-auto pb-2 no-scrollbar">
+          <div className="flex items-center gap-2.5 overflow-x-auto pb-2 no-scrollbar">
             {cities.map((city) => (
               <button
                 key={city}
                 onClick={() => setSelectedCity(city)}
-                className={`px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all ${
+                className={`px-4.5 py-2 rounded-xl text-xs font-mono font-bold whitespace-nowrap transition-all ${
                   selectedCity === city
-                    ? 'bg-blue-600 text-white shadow-sm'
-                    : 'bg-slate-50 text-slate-700 border border-slate-200 hover:bg-slate-100'
+                    ? 'bg-cyan-400 text-slate-950 shadow-[0_0_15px_rgba(0,229,255,0.3)]'
+                    : 'bg-slate-900/80 text-slate-300 border border-white/10 hover:border-white/20'
                 }`}
               >
                 {city === 'All' ? t.locations.filterAll : city}
@@ -75,37 +74,37 @@ export const StoreLocator = () => {
 
         {/* Store Grid */}
         {filteredStores.length === 0 ? (
-          <div className="text-center py-20 bg-white rounded-3xl border border-slate-200 shadow-sm">
-            <p className="text-slate-500 text-lg">No authorized depots found matching your search.</p>
+          <div className="text-center py-20 apple-glass-card rounded-3xl">
+            <p className="text-slate-400 text-sm font-mono">No authorized depots found matching your query.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {filteredStores.map((store) => (
               <div
                 key={store.id}
-                className="bg-white p-8 rounded-3xl border border-slate-200 shadow-md flex flex-col justify-between hover:border-blue-300 hover:shadow-xl transition-all duration-300"
+                className="apple-glass-card p-6 rounded-3xl flex flex-col justify-between hover:border-cyan-500/40 transition-all"
               >
                 <div className="space-y-4">
                   
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold px-3 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
+                    <span className="text-[11px] font-mono font-bold px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
                       {store.city} • {store.region}
                     </span>
-                    <ShieldCheck className="w-5 h-5 text-emerald-600" />
+                    <ShieldCheck className="w-4 h-4 text-emerald-400" />
                   </div>
 
-                  <h3 className="text-lg font-bold text-slate-900 leading-snug">{store.name}</h3>
+                  <h3 className="text-base font-bold text-white leading-snug tracking-tight">{store.name}</h3>
 
-                  <p className="text-sm text-slate-600 leading-relaxed font-normal">{store.address}</p>
+                  <p className="text-xs text-slate-400 leading-relaxed font-normal">{store.address}</p>
 
                 </div>
 
-                <div className="mt-8 pt-4 border-t border-slate-100">
+                <div className="mt-6 pt-4 border-t border-white/10">
                   <a
                     href={`tel:${store.phone}`}
-                    className="flex items-center justify-center gap-2.5 w-full bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-xs sm:text-sm font-bold py-3 rounded-2xl transition-all"
+                    className="flex items-center justify-center gap-2 w-full bg-slate-900 hover:bg-slate-800 border border-white/10 text-slate-200 text-xs font-mono font-bold py-3 rounded-xl transition-all"
                   >
-                    <Phone className="w-4 h-4 text-blue-600" />
+                    <Phone className="w-3.5 h-3.5 text-cyan-400" />
                     <span>{t.locations.callDepot}</span>
                   </a>
                 </div>
